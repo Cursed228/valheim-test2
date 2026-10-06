@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valheim Launcher</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">⚔️</div>
+    <h1>Valheim Launcher</h1>
+    <div class="spacer"></div>
+    <button id="refreshBtn" class="btn-secondary small" title="Обновить">⟳</button>
+    <button id="settingsBtn" class="btn-secondary small" title="Настройки">⚙</button>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h2 class="sidebar-title">Сервера</h2>
+      <ul id="serverList" class="server-list"></ul>
+      <div id="serverListEmpty" class="empty-hint">Список пуст. Проверьте URL конфига в настройках.</div>
+
+      <div class="hildir-block">
+        <img id="hildir" class="hildir" src="../../assets/hildir-clothed.png" alt="Hildir" />
+        <div id="hildirLinks" class="hildir-links hidden">
+          <a href="https://boosty.to/valheimrussia/donate" target="_blank" title="Поддержать на Boosty">
+            <img src="../../assets/bykoyascher.png" alt="Boosty" class="bykoyascher" />
+          </a>
+          <a href="https://www.donationalerts.com/r/slava_slavix" target="_blank" title="DonationAlerts">
+            <img src="../../assets/bykoyascher.png" alt="DonationAlerts" class="bykoyascher" />
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div id="serverDetails" class="server-details hidden">
+        <button id="backBtn" class="back-btn">← Назад</button>
+        <div class="server-header">
+          <img id="serverIcon" class="server-icon" alt="" />
+          <div>
+            <h1 id="serverTitle" class="server-title"></h1>
+            <p id="serverGameVersion" class="server-meta"></p>
+            <p id="serverIpInfo" class="server-meta"></p>
+          </div>
+        </div>
+        <div class="links">
+          <a id="discordLink" class="link hidden" target="_blank">Discord</a>
+          <a id="websiteLink" class="link hidden" target="_blank">Сайт</a>
+        </div>
+        <div class="section">
+          <label class="label">Сборка</label>
+          <div id="modpackTabs" class="tabs"></div>
+        </div>
+        <div class="section">
+          <div class="pack-info">
+            <span id="packVersion" class="pack-version"></span>
+            <span id="packStatus" class="pack-status"></span>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="playBtn" class="btn-primary">▶ Играть</button>
+          <button id="resetBtn" class="btn-secondary">🗑 Сбросить</button>
+        </div>
+        <div id="progressBox" class="progress-box hidden">
+          <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+          <div id="progressText" class="progress-text"></div>
+        </div>
+        <div id="log" class="log"></div>
+      </div>
+
+      <div id="noServer" class="no-server">
+        <a href="https://discord.gg/ccck7PeBv5" target="_blank" class="discord-link" title="Наш Discord">
+          <img src="../../assets/discord.png" alt="Discord" class="discord-icon" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="settingsModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <h2>Настройки</h2>
+      <label class="field-label" for="configUrlInput">URL конфига</label>
+      <div class="row">
+        <input id="configUrlInput" class="input" type="text" placeholder="https://..." />
+        <button id="saveConfigUrlBtn" class="btn-primary small">Сохранить</button>
+      </div>
+      <label class="field-label" for="valheimPathInput">Путь к Valheim</label>
+      <div class="row">
+        <input id="valheimPathInput" class="input" type="text" readonly placeholder="Не найден" />
+      </div>
+      <div class="row">
+        <button id="detectBtn" class="btn-secondary small">Авто</button>
+        <button id="browseBtn" class="btn-secondary small">Выбрать</button>
+      </div>
+      <div class="modal-actions">
+        <button id="closeSettingsBtn" class="btn-primary small">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
